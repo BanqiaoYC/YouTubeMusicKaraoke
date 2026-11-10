@@ -44,7 +44,15 @@ jobs:
           xcodebuild -showsdks
           xcrun simctl list devices available
 
-
+      - name: Validate Xcode project
+        run: |
+          plutil -lint YouTubeMusicKaraoke.xcodeproj/project.pbxproj
+          xmllint --noout YouTubeMusicKaraoke.xcodeproj/xcshareddata/xcschemes/YouTubeMusicKaraoke.xcscheme
+          xcodebuild -list -project YouTubeMusicKaraoke.xcodeproj
+          xcodebuild -showBuildSettings \
+            -project YouTubeMusicKaraoke.xcodeproj \
+            -scheme YouTubeMusicKaraoke \
+            -configuration Debug
 
       - name: Build iOS Simulator app
         run: |

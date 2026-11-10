@@ -20,7 +20,7 @@ jobs:
       - name: Extract project
         run: |
           unzip -q YouTubeMusicKaraoke_Starter.zip -d extracted
-          cp -R extracted/YouTubeMusicKaraoke .
+          cp -R extracted/YouTubeMusicKaraoke/. .
           cp -R extracted/YouTubeMusicKaraoke.xcodeproj .
           rm YouTubeMusicKaraoke_Starter.zip
 
@@ -28,7 +28,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add YouTubeMusicKaraoke YouTubeMusicKaraoke.xcodeproj
+          git add App Views Models Services ViewModels YouTubeMusicKaraoke.xcodeproj
           if ! git diff --cached --quiet; then
             git commit -m "Add SwiftUI starter project"
             git push

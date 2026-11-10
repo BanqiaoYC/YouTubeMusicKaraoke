@@ -56,16 +56,16 @@ jobs:
           xcodebuild -list -project YouTubeMusicKaraoke.xcodeproj
 
 
+
       - name: Build iOS Simulator app
         run: |
           xcodebuild \
             -project YouTubeMusicKaraoke.xcodeproj \
-            -scheme YouTubeMusicKaraoke \
-            -destination 'generic/platform=iOS Simulator' \
+            -target YouTubeMusicKaraoke \
             -sdk iphonesimulator \
             -configuration Debug \
-            -derivedDataPath build \
             CODE_SIGNING_ALLOWED=NO \
+            CONFIGURATION_BUILD_DIR=build/Build/Products/Debug-iphonesimulator \
             build
 
       - name: Upload Simulator App
@@ -74,4 +74,5 @@ jobs:
           name: YouTubeMusicKaraoke-Simulator
           path: build/Build/Products/Debug-iphonesimulator/YouTubeMusicKaraoke.app
           if-no-files-found: error
+
 

@@ -57,24 +57,10 @@ jobs:
 
       - name: Build iOS Simulator app
         run: |
-          set +e
           xcodebuild \
             -project YouTubeMusicKaraoke.xcodeproj \
-            -scheme YouTubeMusicKaraoke \
-            -destination 'platform=iOS Simulator,id=9F21D44E-3C10-4271-A752-FE137CAD662E' \
+            -target YouTubeMusicKaraoke \
+            -sdk iphonesimulator \
             -configuration Debug \
-            -derivedDataPath build \
             CODE_SIGNING_ALLOWED=NO \
             build
-
-          BUILD_STATUS=$?
-          echo "===== XCODEBUILD EXIT CODE: $BUILD_STATUS ====="
-          echo "===== XCODEBUILD CRASH REPORT ====="
-
-          find /Users/runner/Library/Logs/DiagnosticReports \
-               /Library/Logs/DiagnosticReports \
-               -type f -mmin -15 \
-               \( -iname '*xcodebuild*.crash' -o -iname '*xcodebuild*.ips' \) \
-               -print -exec tail -n 160 {} \; 2>/dev/null
-
-          exit $BUILD_STATUS

@@ -44,6 +44,11 @@ jobs:
           xcodebuild -showsdks
           xcrun simctl list devices available
 
+      - name: Select Xcode 26.4.1
+        run: |
+          sudo xcode-select --switch /Applications/Xcode_26.4.1.app/Contents/Developer
+          xcodebuild -version
+
       - name: Validate Xcode project
         run: |
           plutil -lint YouTubeMusicKaraoke.xcodeproj/project.pbxproj

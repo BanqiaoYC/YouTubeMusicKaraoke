@@ -44,6 +44,7 @@ jobs:
           xcodebuild -showsdks
           xcrun simctl list devices available
 
+
       - name: Build iOS Simulator app
         run: |
           xcodebuild \
@@ -53,5 +54,5 @@ jobs:
             -configuration Debug \
             -derivedDataPath build \
             -parallelizeTargets NO \
-            build \
-            CODE_SIGNING_ALLOWED=NO
+            CODE_SIGNING_ALLOWED=NO \
+            build

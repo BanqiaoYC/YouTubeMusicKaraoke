@@ -54,8 +54,8 @@ jobs:
         run: |
           xcodebuild \
             -project YouTubeMusicKaraoke.xcodeproj \
-            -target YouTubeMusicKaraoke \
-            -destination 'generic/platform=iOS Simulator' \
+            -scheme YouTubeMusicKaraoke \
+            -destination 'platform=iOS Simulator,id=9F21D44E-3C10-4271-A752-FE137CAD662E' \
             -configuration Debug \
             -derivedDataPath build \
             CODE_SIGNING_ALLOWED=NO \

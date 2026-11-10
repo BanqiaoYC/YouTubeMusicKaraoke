@@ -55,6 +55,7 @@ jobs:
           xmllint --noout YouTubeMusicKaraoke.xcodeproj/xcshareddata/xcschemes/YouTubeMusicKaraoke.xcscheme
           xcodebuild -list -project YouTubeMusicKaraoke.xcodeproj
 
+
       - name: Build iOS Simulator app
         run: |
           xcodebuild \
@@ -62,5 +63,14 @@ jobs:
             -target YouTubeMusicKaraoke \
             -sdk iphonesimulator \
             -configuration Debug \
+            -derivedDataPath build \
             CODE_SIGNING_ALLOWED=NO \
             build
+
+      - name: Upload Simulator App
+        uses: actions/upload-artifact@v4
+        with:
+          name: YouTubeMusicKaraoke-Simulator
+          path: build/Build/Products/Debug-iphonesimulator/YouTubeMusicKaraoke.app
+          if-no-files-found: error
+

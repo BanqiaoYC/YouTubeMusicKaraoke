@@ -53,5 +53,5 @@ jobs:
             -configuration Debug \
             -derivedDataPath build \
             -parallelizeTargets NO \
-            CODE_SIGNING_ALLOWED=NO \
-            build
+            build \
+            CODE_SIGNING_ALLOWED=NO

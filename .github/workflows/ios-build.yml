@@ -29,9 +29,13 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add YouTubeMusicKaraoke YouTubeMusicKaraoke.xcodeproj
-          git commit -m "Add SwiftUI starter project"
-          git push
-
+          if ! git diff --cached --quiet; then
+            git commit -m "Add SwiftUI starter project"
+            git push
+          else
+            echo "Source files already committed; continue to build."
+          fi
+          
       - name: Diagnose Xcode environment
         run: |
           uname -a

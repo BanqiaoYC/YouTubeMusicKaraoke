@@ -60,7 +60,8 @@ jobs:
         run: |
           xcodebuild \
             -project YouTubeMusicKaraoke.xcodeproj \
-            -target YouTubeMusicKaraoke \
+            -scheme YouTubeMusicKaraoke \
+            -destination 'generic/platform=iOS Simulator' \
             -sdk iphonesimulator \
             -configuration Debug \
             -derivedDataPath build \
